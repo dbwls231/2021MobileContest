@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.up * bulletSpeed * Time.deltaTime);
+       transform.Translate(Vector2.up * bulletSpeed * Time.deltaTime);
     }
 
     void OnBecameInvisible()

@@ -55,10 +55,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Joystick.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameMangaer.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
-    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Items\FreezingItem.cs" />
+    <Compile Include="Assets\Scripts\Items\SlowItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

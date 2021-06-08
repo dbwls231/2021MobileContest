@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private Transform playerPos;
     SpriteRenderer SpriteRenderer;
     Rigidbody2D rigid;
+    private bool isSlow = false;
+    private float slowTimer = 0;
 
     private void Awake()
     {
@@ -36,6 +38,19 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+
+        if (isSlow)
+        {
+            slowTimer += Time.deltaTime;
+            Debug.Log(slowTimer);
+            if (slowTimer > 3)
+            {
+                slowTimer = 0;
+                isSlow = false;
+                speed *= 2;
+                Debug.Log(speed);
+            }
+        }
     }
 
     private void OnHit()
@@ -50,7 +65,7 @@ public class Enemy : MonoBehaviour
 
     void ReturnSprite()
     {
-        SpriteRenderer.sprite = sprites[0];
+        //SpriteRenderer.sprite = sprites[0];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,5 +75,11 @@ public class Enemy : MonoBehaviour
             OnHit();
             Destroy(collision.gameObject);
         }
+    }
+
+    public void ToSlow()
+    {
+        speed *= 0.5f;
+        isSlow = true;
     }
 }
