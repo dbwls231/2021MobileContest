@@ -9,18 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Joystick joystick;
     private float moveSpeed = 10;
-    float bulletCoolTime = 0.5f;
+    float bulletCoolTime = 0.3f;
     private Vector3 lastDirection = Vector3.up;
 
     public GameObject bullet;
 
     float timer = 0;
     
-
-    private void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -55,6 +50,11 @@ public class Player : MonoBehaviour
         Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos);
         transform.position = worldPos;
 
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        transform.position += new Vector3(h, v, 0) * moveSpeed * Time.deltaTime;
+
     }
 
 
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-           SceneManager.LoadScene("EndingScene");
+           //SceneManager.LoadScene("EndingScene");
         }
     }
 }

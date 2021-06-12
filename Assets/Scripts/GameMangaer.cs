@@ -5,12 +5,9 @@ using UnityEngine;
 public class GameMangaer : MonoBehaviour
 {
     public GameObject enemy;
-    public GameObject []items;
     private float enemySpawnDelay = 1;
     private float curEnemySpawnDelay = 1;
     private float enemyTimer = 0;
-    private float itemCreateDelay = 4;
-    private float itemTimer = 0;
     private float spawnRadius = 9;
     
 
@@ -19,7 +16,6 @@ public class GameMangaer : MonoBehaviour
     private void Update()
     {
         enemyTimer += Time.deltaTime;
-        itemTimer += Time.deltaTime;
 
         if (enemySpawnDelay > 0.05)
             enemySpawnDelay -= Time.deltaTime * 0.01f;
@@ -31,11 +27,6 @@ public class GameMangaer : MonoBehaviour
             enemyTimer = 0;
         }
 
-        if (itemTimer > itemCreateDelay)
-        {
-            CreateItem();
-            itemTimer = 0;
-        }
     }
 
     void SpawnEnemy()
@@ -43,16 +34,8 @@ public class GameMangaer : MonoBehaviour
         spawnPos = Random.insideUnitCircle.normalized * spawnRadius;
 
         Instantiate(enemy, spawnPos, transform.rotation);
-
     }
 
-    void CreateItem()
-    {
-        Debug.Log("ItemCreate");
-        spawnPos = Random.insideUnitCircle.normalized * spawnRadius;
-        
-        Instantiate(items[0], spawnPos, transform.rotation);
-        
-    }
+   
 
 }

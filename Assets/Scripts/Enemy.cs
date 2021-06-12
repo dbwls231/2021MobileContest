@@ -5,13 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private float speed;
+    private float curSpeed;
     private int health;
     public Sprite[] sprites;
     private Transform playerPos;
     SpriteRenderer SpriteRenderer;
     Rigidbody2D rigid;
-    private bool isSlow = false;
-    private float slowTimer = 0;
+    public GameObject item;
 
     private void Awake()
     {
@@ -22,45 +22,43 @@ public class Enemy : MonoBehaviour
         {
             speed = 1.5f;
             health = 2;
-            //나중에 스프라이트 불러오기
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
         }
         else if (enemyNum == 5)
         {
             speed = 3;
             health = 1;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
         else
         {
             speed = 0.7f;
             health = 6;
         }
+        curSpeed = speed;
     }
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, curSpeed * Time.deltaTime);
 
-        if (isSlow)
-        {
-            slowTimer += Time.deltaTime;
-            Debug.Log(slowTimer);
-            if (slowTimer > 3)
-            {
-                slowTimer = 0;
-                isSlow = false;
-                speed *= 2;
-                Debug.Log(speed);
-            }
-        }
+        //회전
+        Vector3 dir = transform.position - playerPos.position;
+        float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, z - 90);
+
     }
 
     private void OnHit()
     {
         health--;
         //SpriteRenderer.sprite = sprites[1];
-        Invoke("ReturnSprite", 0.1f);
+        //Invoke("ReturnSprite", 0.1f);
 
         if (health == 0)
+        {
+            Instantiate(item, transform.position, transform.rotation);
             Destroy(gameObject);
+        }
     }
 
     void ReturnSprite()
@@ -75,11 +73,36 @@ public class Enemy : MonoBehaviour
             OnHit();
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "FreezingArea")
+        {
+            curSpeed = 0;
+            Invoke("ToOriginSpeed", 5f);
+        }
+        if(collision.gameObject.tag == "Bubble")
+        {
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.tag == "Bomb")
+        {
+            health--;
+            if (health == 0)
+                Destroy(gameObject);
+        }
     }
 
     public void ToSlow()
     {
-        speed *= 0.5f;
-        isSlow = true;
+        curSpeed *= 0.35f;
+        Invoke("ToOriginSpeed", 3f);
+
+    }
+
+    private void ToOriginSpeed()
+    {
+        curSpeed = speed;
+    }
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 }
