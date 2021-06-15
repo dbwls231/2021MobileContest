@@ -52,9 +52,9 @@ public class Item : MonoBehaviour
             }
             else if (n == 2) //freeze
             {
-                freezingArea.SetActive(true);
+                Instantiate(freezingArea, transform.position, transform.rotation);
                 Debug.Log("freeze");
-                Invoke("FreezingItem", 0.3f);
+                Destroy(this.gameObject);
             }
             else if (n == 3) //bubble
             {
@@ -70,13 +70,6 @@ public class Item : MonoBehaviour
             }
            
         }
-    }
-    
-
-    void freezingItem()
-    {
-        freezingArea.SetActive(true);
-        Destroy(this.gameObject);
     }
 
     void ActiveBomb()
