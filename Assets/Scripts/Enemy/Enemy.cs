@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public ScoreManager ScoreManager;
     private float speed;
     private float curSpeed;
     private int health;
@@ -12,9 +13,13 @@ public class Enemy : MonoBehaviour
     SpriteRenderer SpriteRenderer;
     Rigidbody2D rigid;
     public GameObject item;
+    public float ChaseTime = 999;
+    private float t = 0;
+    private int MonsterAdditionScore = 30;
 
     private void Awake()
     {
+        ScoreManager = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreManager>();
         rigid = GetComponent<Rigidbody2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         int enemyNum = Random.Range(0, 7);
@@ -26,6 +31,7 @@ public class Enemy : MonoBehaviour
         }
         else if (enemyNum == 5)
         {
+            ChaseTime = 3;
             speed = 3;
             health = 1;
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
@@ -38,15 +44,20 @@ public class Enemy : MonoBehaviour
         }
         curSpeed = speed;
     }
+
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, curSpeed * Time.deltaTime);
+        t += Time.deltaTime;
 
-        //È¸Àü
-        Vector3 dir = transform.position - playerPos.position;
-        float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, z - 90);
-
+        if (t < ChaseTime)
+        {
+            Vector3 dir = transform.position - playerPos.position;
+            float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, z - 90);
+            transform.position = Vector2.MoveTowards(transform.position, playerPos.position, curSpeed * Time.deltaTime);
+        }
+        else
+            transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * curSpeed);
     }
 
     private void OnHit()
@@ -59,7 +70,8 @@ public class Enemy : MonoBehaviour
         {
             //if(Random.Range(0,10)>7)
                 Instantiate(item, transform.position, transform.rotation);
-            Destroy(gameObject);
+                Destroy(gameObject);
+                ScoreManager.curScore += MonsterAdditionScore;
         }
     }
 
@@ -83,12 +95,14 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Bubble")
         {
             Destroy(gameObject);
+            ScoreManager.curScore += MonsterAdditionScore;
         }
         if(collision.gameObject.tag == "Bomb")
         {
             //health=0;
             //if (health == 0)
                 Destroy(gameObject);
+                ScoreManager.curScore += MonsterAdditionScore;
         }
     }
 

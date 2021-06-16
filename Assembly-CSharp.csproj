@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Joystick.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossTurn.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Stage1GameManager.cs" />
     <Compile Include="Assets\Scripts\Items\BombItem.cs" />
@@ -66,7 +67,67 @@
     <Compile Include="Assets\Scripts\GameMangaer.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
-    <Compile Include="Assets\Scripts\Enemy\BossTurn.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanTest.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanAudio.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LTDescrOptional.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSpline.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanTween.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSpline2d.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\LogoCinematic.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSplines.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralBasic.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathBezier2d.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\Following.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Archived\TestingPunch.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathBezier.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LTDescr.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LTSeq.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanTweenExt.cs" />
+    <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Ending.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Unity Package\LeanTween\ReadMe.txt" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Unity Package\LeanTween\License.txt" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Unity Package\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

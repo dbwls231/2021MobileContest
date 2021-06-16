@@ -10,6 +10,8 @@ TagManager:
   - Bubble
   - Bomb
   - GameManager
+  - Score
+  - EndingScore
   layers:
   - Default
   - TransparentFX
