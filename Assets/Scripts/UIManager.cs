@@ -54,11 +54,27 @@ public class UIManager : MonoBehaviour
 
     public void ExitGame()
     {
-       
+        Application.Quit();
+    }
+
+    public void StartGame()
+    {
+        StartCoroutine("PlayGameCoroutine");
+    }
+
+    public void TutorialGame()
+    {
+
     }
 
     void TimeStop()
     {
         Time.timeScale = 0;
+    }
+
+    IEnumerator PlayGameCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("SampleScene");
     }
 }

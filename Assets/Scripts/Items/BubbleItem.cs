@@ -6,7 +6,7 @@ public class BubbleItem : MonoBehaviour
 {
     private float curX, curY;
     private int hitNum = 0;
-    public float bubbleSpeed = 1;
+    public float bubbleSpeed = 10;
     
     void Start()
     {

@@ -22,27 +22,30 @@ public class Item : MonoBehaviour
 
     void Update()
     {
-
-        if (transform.position.x < -8.7 && hitNum<3)
+        if (transform.position.x < -8.7 && hitNum < 3)
         {
+            if (curX != 1)
+                hitNum++;
             curX = 1;
-            hitNum++;
         }
-        else if(transform.position.x > 8.5 && hitNum < 3)
+        else if(transform.position.x > 8.7 && hitNum < 3)
         {
+            if (curX != -1)
+                hitNum++;
             curX = -1;
-            hitNum++;
         }
 
-        if (transform.position.y < -5.3 && hitNum<3)
+        if (transform.position.y < -5.3 && hitNum < 3)
         {
+            if (curY != 1)
+                hitNum++;
             curY = 1;
-            hitNum++;
         }
         else if(transform.position.y > 5.3 && hitNum < 3)
         {
+            if (curY != -1)
+                hitNum++;
             curY = -1;
-            hitNum++;
         }
 
         transform.Translate(new Vector3(curX, curY, transform.position.z) * itemSpeed * Time.deltaTime);
@@ -53,7 +56,7 @@ public class Item : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             int n = (int)Random.Range(0, 7);
-            if (n <2) //slow
+            if (n < 2) //slow
             {
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 for (int i = 0; i < enemies.Length; i++)
@@ -61,15 +64,14 @@ public class Item : MonoBehaviour
 
                 StartCoroutine("TimeSlowActive");
                 Debug.Log("slow");
-                Destroy(this.gameObject);
             }
-            else if (n <4) //freeze
+            else if (n < 4) //freeze
             {
                 Instantiate(freezingArea, transform.position, transform.rotation);
                 Debug.Log("freeze");
                 Destroy(this.gameObject);
             }
-            else if (n <5) //bubble
+            else if (n < 5) //bubble
             {
                 Instantiate(bubble, transform.position, transform.rotation);
                 Debug.Log("bubble");
@@ -97,8 +99,10 @@ public class Item : MonoBehaviour
 
     IEnumerator TimeSlowActive()
     {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         TimeSlow.SetActive(true);
         yield return new WaitForSeconds(5f);
         TimeSlow.SetActive(false);
+        Destroy(this.gameObject);
     }
 }
