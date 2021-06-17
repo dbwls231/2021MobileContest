@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Stage1Boss : MonoBehaviour
 {
@@ -14,11 +15,15 @@ public class Stage1Boss : MonoBehaviour
     GameObject child;
     private Transform playerPos;
     private int currentPhase;
+    private int curScore = 0;
+    public Stage1Score ScoreManager;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
+        ScoreManager = GameObject.FindGameObjectWithTag("Score").GetComponent<Stage1Score>();
+
         curX = Random.Range(0.8f, 1.1f) * (int)Mathf.Pow(-1, (int)Random.Range(0, 2));
         curY = curX * (int)Mathf.Pow(-1, (int)Random.Range(0, 2));
 
@@ -35,7 +40,7 @@ public class Stage1Boss : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (transform.position.x<-7.5)
@@ -95,6 +100,7 @@ public class Stage1Boss : MonoBehaviour
         if (health == 0)
         {
             gameMg.GetComponent<Stage1GameManager>().CreateBoss(currentPhase, transform);
+            ScoreManager.curScore += 300;
             Destroy(gameObject);
         }
     }
