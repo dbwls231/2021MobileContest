@@ -16,24 +16,30 @@ public class Ending : MonoBehaviour
     {
         scoreManager = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreManager>();
         EndingScoreResult = GameObject.FindGameObjectWithTag("EndingScore").GetComponent<TextMeshProUGUI>();
-        //StartCoroutine("End");
+    }
+
+    public void EndGame()
+    {
+        StartCoroutine("End");
     }
 
     IEnumerator End()
     {
+        Time.timeScale = .1f;
+
         foreach (GameObject gameObject in GameUI)
         {
             gameObject.SetActive(true);
             yield return null;
         }
 
+        GameUI[4].SetActive(false);
 
-        Time.timeScale = .1f;
-
-        LeanTween.value(GameUI[1], new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), .1f);
         LeanTween.value(GameUI[3], new Color(0, 0, 0, 0), new Color(0, 0, 0, .4f), .1f);
-
+        yield return new WaitForSeconds(.1f);
         LeanTween.moveY(GameUI[2], 0, .2f);
+        LeanTween.value(GameUI[1], new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), .1f);
+
 
         yield return new WaitForSeconds(.2f);
 

@@ -10,26 +10,38 @@ public class Item : MonoBehaviour
     public GameObject freezingArea;
     public GameObject bubble;
     public GameObject bomb;
+    public GameObject TimeSlow;
 
    
     void Start()
     {
-        curX = (int)Mathf.Pow(-1, (int)Random.Range(1, 2));
-        curY = (int)Mathf.Pow(-1, (int)Random.Range(1, 2));
-
+        TimeSlow = GameObject.FindGameObjectWithTag("TimeSlow").transform.GetChild(0).gameObject;
+        curX = (int)Mathf.Pow(-1, (int)Random.Range(1, 3));
+        curY = (int)Mathf.Pow(-1, (int)Random.Range(1, 3));
     }
 
     void Update()
     {
-        if (transform.position.x < -8.7 || transform.position.x > 8.7 && hitNum<3)
+
+        if (transform.position.x < -8.7 && hitNum<3)
         {
-            curX *= -1;
+            curX = 1;
+            hitNum++;
+        }
+        else if(transform.position.x > 8.5 && hitNum < 3)
+        {
+            curX = -1;
             hitNum++;
         }
 
-        if (transform.position.y < -5.3 || transform.position.y > 5.3 && hitNum<3)
+        if (transform.position.y < -5.3 && hitNum<3)
         {
-            curY *= -1;
+            curY = 1;
+            hitNum++;
+        }
+        else if(transform.position.y > 5.3 && hitNum < 3)
+        {
+            curY = -1;
             hitNum++;
         }
 
@@ -40,23 +52,24 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            int n = (int)Random.Range(0, 4);
-            if (n == 1) //slow
+            int n = (int)Random.Range(0, 7);
+            if (n <2) //slow
             {
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 for (int i = 0; i < enemies.Length; i++)
                     enemies[i].GetComponent<Enemy>().ToSlow();
 
+                StartCoroutine("TimeSlowActive");
                 Debug.Log("slow");
                 Destroy(this.gameObject);
             }
-            else if (n == 2) //freeze
+            else if (n <4) //freeze
             {
                 Instantiate(freezingArea, transform.position, transform.rotation);
                 Debug.Log("freeze");
                 Destroy(this.gameObject);
             }
-            else if (n == 3) //bubble
+            else if (n <5) //bubble
             {
                 Instantiate(bubble, transform.position, transform.rotation);
                 Debug.Log("bubble");
@@ -80,5 +93,12 @@ public class Item : MonoBehaviour
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
+    }
+
+    IEnumerator TimeSlowActive()
+    {
+        TimeSlow.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        TimeSlow.SetActive(false);
     }
 }

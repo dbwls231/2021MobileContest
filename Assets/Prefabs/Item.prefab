@@ -100,6 +100,7 @@ MonoBehaviour:
   freezingArea: {fileID: 838428663933470165, guid: 6b94cbf794772f74aba36e5bb304fa15, type: 3}
   bubble: {fileID: 4205373794586484093, guid: 36b787904967e9f4e883b3067791e5b7, type: 3}
   bomb: {fileID: 9065781092632078577, guid: 4046c4bfdadefa4478f35e4045ed3277, type: 3}
+  TimeSlow: {fileID: 3075238367578406364, guid: 2b9dbc888606b074e833471c0e181d81, type: 3}
 --- !u!70 &4064642190293657523
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

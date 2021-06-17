@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0.1f;
 
         GameUI[3].LeanMoveLocalY(-350, .02f);
-        GameUI[4].LeanMoveLocalY(-550, .02f).setOnComplete(TimeStop);
+        GameUI[4].LeanMoveLocalY(-550, .02f);
+        GameUI[5].LeanMoveLocalY(-750, .02f).setOnComplete(TimeStop);
     }
 
     public void ContinueGame()
@@ -28,6 +30,7 @@ public class UIManager : MonoBehaviour
 
         GameUI[3].LeanMoveLocalY(-150, .001f);
         GameUI[4].LeanMoveLocalY(-150, .001f);
+        GameUI[5].LeanMoveLocalY(-150, .001f);
 
         foreach (GameObject UI in GameUI)
         {
@@ -41,12 +44,17 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-
+        SceneManager.LoadScene("Stage1Boss");
     }
 
     public void SettingGame()
     {
 
+    }
+
+    public void ExitGame()
+    {
+       
     }
 
     void TimeStop()

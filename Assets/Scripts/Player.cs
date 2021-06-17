@@ -8,14 +8,19 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private Joystick joystick;
-    private float moveSpeed = 10;
-    float bulletCoolTime = 0.3f;
+    private float moveSpeed = 6;
+    float bulletCoolTime = 0.2f;
     private Vector3 lastDirection = Vector3.up;
+    private Ending ending;
 
     public GameObject bullet;
 
     float timer = 0;
-    
+
+    private void Awake()
+    {
+        ending = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Ending>();
+    }
 
     void Update()
     {
@@ -65,9 +70,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-           //SceneManager.LoadScene("EndingScene");
-        }
+        if (collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Enemy>().isFreezing)
+            ending.EndGame();
+        else if (collision.gameObject.tag == "Boss")
+            ending.EndGame();
     }
 }

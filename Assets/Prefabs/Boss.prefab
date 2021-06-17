@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2336517119002349658}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c707a54568c9df842a6f159325e919f4, type: 3}
   m_Color: {r: 0.37255248, g: 0.38217202, b: 0.49056602, a: 1}
   m_FlipX: 0

@@ -12,6 +12,8 @@ TagManager:
   - GameManager
   - Score
   - EndingScore
+  - TimeSlow
+  - Boss
   layers:
   - Default
   - TransparentFX

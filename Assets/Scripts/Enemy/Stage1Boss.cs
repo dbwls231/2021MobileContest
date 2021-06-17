@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stage1Boss : MonoBehaviour
 {
     private float bossSpeed = 3f;
-    private float bulletCoolTime = 0.5f;
+    private float bulletCoolTime = 0.9f;
     private float curX, curY;
     private float timer = 0;
     private int health = 5;
@@ -38,16 +38,26 @@ public class Stage1Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < -7.5 || transform.position.x > 7.5)
+        if (transform.position.x<-7.5)
         {
-            curX *= -1;
+            curX = 1;
             child.GetComponent<BossTurn>().ToRotate();
 
+        }
+        else if (transform.position.x > 7.5)
+        {
+            curX = -1;
+            child.GetComponent<BossTurn>().ToRotate();
         }
 
         if (transform.position.y < -4.5 || transform.position.y > 4.5)
         {
-            curY *= -1;
+            curY = 1;
+            child.GetComponent<BossTurn>().ToRotate();
+        }
+        if (transform.position.y > 4.5)
+        {
+            curY = -1;
             child.GetComponent<BossTurn>().ToRotate();
         }
 

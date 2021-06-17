@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI score;
     public int curScore;
     float timer;
-    float plusScoreTime=0.5f;
+    float plusScoreTime = 0.5f;
 
     void Start()
     {
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<TextMeshProUGUI>();
         timer = 0;
-        curScore = 99999;
+        curScore = 0;
     }
 
     void Update()
@@ -24,9 +25,11 @@ public class ScoreManager : MonoBehaviour
 
         if (timer > plusScoreTime)
         {
-            curScore += 0;
+            curScore += 50;
             timer = 0;
         }
+        if (curScore > 5000)
+            SceneManager.LoadScene("Stage1Boss");
 
         score.text = curScore.ToString();
 
