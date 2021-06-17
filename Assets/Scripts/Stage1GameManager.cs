@@ -33,7 +33,7 @@ public class Stage1GameManager : MonoBehaviour
             bossPhase = 3;
             bossHealth = 5;
             bossScale = 2;
-            bossBulletScale = 0.65f;
+            bossBulletScale = 0.7f;
             Instantiate(stage1Boss, trans.position, trans.rotation);
             Instantiate(stage1Boss, trans.position + new Vector3(1, 0, trans.position.z), trans.rotation);
         }
@@ -42,7 +42,7 @@ public class Stage1GameManager : MonoBehaviour
             bossPhase = 4;
             bossHealth = 3;
             bossScale = 1.5f;
-            bossBulletScale = 0.5f;
+            bossBulletScale = 0.6f;
             Instantiate(stage1Boss, trans.position, trans.rotation);
             Instantiate(stage1Boss, trans.position + new Vector3(1, 0, trans.position.z), trans.rotation);
         }
@@ -51,7 +51,7 @@ public class Stage1GameManager : MonoBehaviour
             bossPhase = 5;
             bossHealth = 2;
             bossScale = 1;
-            bossBulletScale = 0.35f;
+            bossBulletScale = 0.5f;
 
         }
     }

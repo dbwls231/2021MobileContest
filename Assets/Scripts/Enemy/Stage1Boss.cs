@@ -17,12 +17,14 @@ public class Stage1Boss : MonoBehaviour
     private int currentPhase;
     private int curScore = 0;
     public Stage1Score ScoreManager;
+    public Stage1GameManager gameManager;
 
 
 
     void Start()
     {
         ScoreManager = GameObject.FindGameObjectWithTag("Score").GetComponent<Stage1Score>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Stage1GameManager>();
 
         curX = Random.Range(0.8f, 1.1f) * (int)Mathf.Pow(-1, (int)Random.Range(0, 2));
         curY = curX * (int)Mathf.Pow(-1, (int)Random.Range(0, 2));
@@ -46,24 +48,20 @@ public class Stage1Boss : MonoBehaviour
         if (transform.position.x<-7.5)
         {
             curX = 1;
-            child.GetComponent<BossTurn>().ToRotate();
 
         }
         else if (transform.position.x > 7.5)
         {
             curX = -1;
-            child.GetComponent<BossTurn>().ToRotate();
         }
 
         if (transform.position.y < -4.5 || transform.position.y > 4.5)
         {
             curY = 1;
-            child.GetComponent<BossTurn>().ToRotate();
         }
         if (transform.position.y > 4.5)
         {
             curY = -1;
-            child.GetComponent<BossTurn>().ToRotate();
         }
 
         transform.Translate(new Vector3(curX, curY, 0) * bossSpeed * Time.deltaTime);
@@ -82,7 +80,9 @@ public class Stage1Boss : MonoBehaviour
     {
         Vector3 dir = transform.position - playerPos.position;
         float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Instantiate(bossBullet, transform.position, Quaternion.Euler(0,0,z + 90));
+        
+        Instantiate(bossBullet, transform.GetChild(0).GetChild(0).transform.position, Quaternion.Euler(0,0,z + 90));
+        gameManager.bossBulletScale = 0.9f - currentPhase * 0.1f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

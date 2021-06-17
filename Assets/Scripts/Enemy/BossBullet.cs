@@ -19,4 +19,8 @@ public class BossBullet : MonoBehaviour
         transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
 
     }
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }

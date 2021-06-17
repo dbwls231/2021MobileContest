@@ -8,7 +8,7 @@ public class GameMangaer : MonoBehaviour
     private float enemySpawnDelay = 1;
     private float curEnemySpawnDelay = 1;
     private float enemyTimer = 0;
-    private float spawnRadius = 9;
+    private float spawnRadius = 11;
     
 
     private Vector3 spawnPos;

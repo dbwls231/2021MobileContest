@@ -15,10 +15,6 @@ public class BossTurn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public void ToRotate()
-    {
         Vector3 dir = transform.position - playerPos.position;
         float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, z + 90);
