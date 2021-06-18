@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,7 +53,7 @@
     <UnityVersion>2020.3.11f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanTween.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\LogoCinematic.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
@@ -67,12 +67,13 @@
     <Compile Include="Assets\Scripts\Enemy\BossTurn.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Framework\LeanAudio.cs" />
+    <Compile Include="Assets\Scripts\Manager\Stage1Score.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathSpline.cs" />
-    <Compile Include="Assets\Scripts\Stage1GameManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\Stage1GameManager.cs" />
     <Compile Include="Assets\Scripts\Items\BombItem.cs" />
     <Compile Include="Assets\Scripts\Enemy\Stage1Boss.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
@@ -92,9 +93,9 @@
     <Compile Include="Assets\Scripts\Items\BubbleItem.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\PathBezier2d.cs" />
-    <Compile Include="Assets\Scripts\GameMangaer.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameMangaer.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\ScoreManager.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
@@ -102,7 +103,6 @@
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\GeneralBasic.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\Unity Package\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Scripts\Stage1Score.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Unity Package\TextMesh Pro\Shaders\TMPro.cginc" />
