@@ -100,8 +100,8 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0 )
         {
-            if(Random.Range(0,10)>6)
-            Instantiate(item, transform.position, transform.rotation);
+            if(Random.Range(0,10)>0)
+            Instantiate(item, transform.position, Quaternion.identity);
             Destroy(gameObject);
             ScoreManager.curScore += MonsterAdditionScore;
         }
