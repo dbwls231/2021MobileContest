@@ -101,6 +101,7 @@ public class Stage1Boss : MonoBehaviour
         {
             gameMg.GetComponent<Stage1GameManager>().CreateBoss(currentPhase, transform);
             ScoreManager.curScore += 300;
+            ScoreManager.bossKillNum += 1;
             Destroy(gameObject);
         }
     }

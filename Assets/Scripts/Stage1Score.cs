@@ -7,6 +7,7 @@ public class Stage1Score : MonoBehaviour
 {
     public TextMeshProUGUI score;
     public int curScore;
+    public int bossKillNum=0;
 
     
     void Start()
@@ -19,5 +20,10 @@ public class Stage1Score : MonoBehaviour
     void Update()
     {
         score.text = curScore.ToString();
+        if (bossKillNum == 15)
+        {
+            curScore += 500;
+            //여기에 보스 클리어 띄우면 됨
+        }
     }
 }

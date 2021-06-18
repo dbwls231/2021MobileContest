@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private int MonsterAdditionScore = 30;
     private int spriteNum;
     public bool isFreezing = false;
+    private float freezingTimer = 0;
 
     private void Awake()
     {
@@ -64,7 +65,6 @@ public class Enemy : MonoBehaviour
             t += Time.deltaTime;
             t2 += Time.deltaTime;
 
-
             if (t < ChaseTime)
             {
                 Vector3 dir = transform.position - playerPos.position;
@@ -82,13 +82,21 @@ public class Enemy : MonoBehaviour
                 gameObject.transform.localScale = new Vector2(-scale.x, scale.y);
             }
         }
+        else
+        {
+            freezingTimer -= Time.deltaTime;
+            if (freezingTimer <= 0)
+            {
+                isFreezing = false;
+                ToOriginSpeed();
+                ReturnSprite();
+            }
+        }
     }
 
     private void OnHit(int n)
     {
         health -= n;
-        //SpriteRenderer.sprite = sprites[1];
-        //Invoke("ReturnSprite", 0.1f);
 
         if (health <= 0 )
         {
@@ -116,9 +124,8 @@ public class Enemy : MonoBehaviour
         {
             curSpeed = 0;
             isFreezing = true;
+            freezingTimer = 5;
             spriteRenderer.sprite = sprites[spriteNum + 3];
-            Invoke("ReturnSprite", 5f);
-            Invoke("ToOriginSpeed", 5f);
         }
         if (collision.gameObject.tag == "Bubble")
         {
@@ -129,8 +136,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Bomb")
         {
             OnHit(10);
-            //health=0;
-            //if (health == 0)
             Destroy(gameObject);
             ScoreManager.curScore += MonsterAdditionScore;
         }
